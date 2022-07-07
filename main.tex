@@ -153,8 +153,8 @@ These two operations must satisfy the eight following axioms:
     \item Commutativity of vector addition: $\forall\: \ket{U}, \ket{V} \in V\; \ket{U}+\ket{V}=\ket{V}+\ket{U}$.
     \item Identity element of vector addition:
     $\exists\: \ket{0}\in V\;\mid\;\forall \ket{V}\in V\;\ket{V} + \ket{0}= \ket{V}$. 
-    \item Inverse elements of vector addition: $\forall \ket{V}\in V\;\exists\; \ket{-v}\in V \mid 
-    \ket{V}+\ket{-v}=\ket{0}$.
+    \item Inverse elements of vector addition: $\forall \ket{V}\in V\;\exists\; \ket{-V}\in V \mid 
+    \ket{V}+\ket{-V}=\ket{0}$.
     \item Compatibility of scalar multiplication with field multiplication:\\
     $\forall\: a,b\in F\: \ket{V}\in V\;a(b\ket{V}) = (ab)\ket{V}$.
     \item Identity element of scalar multiplication: if $1$ is the multiplicative identity in $F$, then $\forall\:\ket{V}\in V\;1\ket{V}=\ket{V}$.
@@ -162,6 +162,23 @@ These two operations must satisfy the eight following axioms:
     \item Distributivity of scalar multiplication with respect to field addition: 
     $\forall\: a,b\in F\:\ket{V}\in V\:(a+b)\ket{V} = a\ket{V}+b\ket{V}$.
 \end{enumerate}
+Subtraction of two vectors can be defined as $\ket{V}-\ket{W} = \ket{V} + \ket{-w}$.
 \end{definition}
+
+\begin{remark}
+    From the axioms it follows that 
+    \begin{enumerate}
+        \item $\ket{0}$ and the inverse are unique. The proof is the same as for the case of the group above.
+        \item $0\ket{V}=0$: $\ket{V}=1\ket{V}=(0+1)\ket{V}=0\ket{V}+\ket{V}\Rightarrow 0\ket{V}=0$.
+        \item $\ket{-V}=-\ket{V}$
+    \end{enumerate}
+\end{remark}
+
+\begin{example}
+    Consider all functions $f(x)$ defined in an interval $0<x<L$ and such that $f(0)=f(L)=0$. 
+    We define scalar multiplication by $a$ simply as $af(x)$ and addition as pointwise addition. These functions form a vector space where 
+    $\ket{0}$ is the function which is zero everywhere and the additive inverse of $\ket{f(x)}$ is $\ket{-f(x)}$.
+    Notice that if $f(0)=f(L)\neq 0$ then we do not have a vector space.
+\end{example}
 
 \end{document}
