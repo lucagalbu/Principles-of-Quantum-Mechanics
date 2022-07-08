@@ -181,4 +181,81 @@ Subtraction of two vectors can be defined as $\ket{V}-\ket{W} = \ket{V} + \ket{-
     Notice that if $f(0)=f(L)\neq 0$ then we do not have a vector space.
 \end{example}
 
+\subsection{Linear independency}
+\begin{definition}[Linear independency]
+    A set of vectors $\ket{i}$ is said to be linearly independent if
+    $\sum a_i\ket{i}=\ket{0}$
+    is satisfied only by the trivial solution $a_i=0$.
+\end{definition}
+
+\begin{remark}
+    If a set of vectors is linearly dependent, there must exist at least two $a_i\neq 0$. Let's say $a_3\neq 0$, then
+    $\ket{3}=-\sum_{i\neq 3}\frac{a_i}{a_3}\ket{i}$. That is, in a set of linearly dependent vectors, at least one of them
+    can be written as a linear combination of the other. On the other hand, it is not possible to write any member of the
+    linearly independent set in terms of the others.
+\end{remark}
+
+\begin{definition}[Dimension of the vector space]
+    A vector space has dimension $n$ if it can accommodate a maximum
+    of $n$ linearly independent vectors. It will be denoted by $V^n$.
+\end{definition}
+
+\begin{example}
+    The set of $2 \times 2$ matrices is a four-dimensional vector space. In fact, the following four vectors are linearly indpenedent:
+    \begin{equation}
+        \begin{array}{cccc}
+            \ket{1}=\left[
+                \begin{array}{cc}
+                    1&0\\
+                    0&0
+                \end{array}
+        \right] &
+        \ket{2}=\left[
+            \begin{array}{cc}
+                0&1\\
+                0&0
+            \end{array}
+        \right] &
+        \ket{3}=\left[
+            \begin{array}{cc}
+                0&0\\
+                1&0
+            \end{array}
+        \right] &
+        \ket{4}=\left[
+            \begin{array}{cc}
+                0&0\\
+                0&1
+            \end{array}
+        \right]
+        \end{array}
+    \end{equation} 
+    Notice that any other matrix can be written as a linear combination of these four matrices. We have seen that in a set of linearly
+    independent vectors, no vector can be written as a linear combination of the others. This means that the four matrices given above 
+    represent the largest set of linearly independent vectors, and the vector space of $2\times 2$ matrices has dimension $n=4$.
+\end{example}
+
+\begin{definition}[Basis]
+    A set of $n$ linearly independent vectors in an $n$-dimensional space is called a \textit{basis}.
+\end{definition}
+
+\begin{definition}[Component]
+    Given a basis $\ket{i}$, any vector $\ket{V}$ can be written as a linear combination of the vectors $\ket{i}$. The coefficients of the
+    linear combination are called the \textit{components} of $\ket{V}$ in the basis $\ket{i}$.
+\end{definition}
+
+\begin{theorem}
+    The expansion of a vector in a given basis is unique.
+\end{theorem}
+\begin{proof}
+    Let's suppose that there exist two different expansions:
+    \begin{equation*}
+        \ket{V}=\sum a_i\ket{i} = \sum a'_i\ket{i}
+    \end{equation*}
+    It follows
+    \begin{equation*}
+        \sum a_i\ket{i} - \sum a'_i\ket{i} =  \sum (a_i-a'_i)\ket{i} = \ket{0}
+    \end{equation*}
+    Since $\ket{i}$ are linearly independent, this means that $a_i=a'_i$ and the expansion is unique.
+\end{proof}
 \end{document}
