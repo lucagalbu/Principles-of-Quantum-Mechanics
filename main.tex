@@ -311,6 +311,7 @@ in some basis. Now there is no way to make a number out of two columns by direct
 by matrix multiplication of a row times a column. In particular, if we represent the bra $\bra{W}$ with the \textit{adjoint} (transpose
 conjugate) of $\ket{W}$, in an orthonormal basis we have 
 \begin{equation}
+    \label{eq:bra_components}
     \scalar{W}{V}=[w^*_1,...,w^*_n]
     \left[\begin{array}{c}
         v^1\\
@@ -339,6 +340,7 @@ By going to any basis it is readily found that
 \end{equation*}
 It is customary to write $a\ket{V}$ as $\ket{aV}$ and the corresponding bra as $\bra{aV}$. What we have found is that
 \begin{equation}
+    \label{eq:bra_components_2}
     \bra{aV}=\bra{V}a^*
 \end{equation}
 
@@ -551,4 +553,68 @@ which gives the $n\times n$ matrix reported above.
     identity. If we form the sum over just some of the projection operators, we get the operator which projects a given vector into the 
     subspace spanned by just the corresponding basis vectors.
 \end{remark}
+
+\subsection{Adjoint of an operator}
+We have seen the action of an operator on a ket $\ket{V}$. But what about the action on a bra $\bra{V}$?
+In a given basis, we have seen that the bra is the transpose conjugate of the corresponding ket (see Eq. \ref{eq:bra_components}
+and Eq. \ref{eq:bra_components_2}). Here will see that the same applies for operators.
+
+\begin{definition}[Adjoint]
+    If $\ket{\Omega}$ is the operator that turns a ket $\ket{V}$ into $\ket{V'}$, then its \textit{adjoint} $\Omega^\dagger$ is 
+    defined as the operator that turns the bra $\bra{V}$ into $\bra{V'}$.
+\end{definition}
+\begin{theorem}
+    In a given basis, the matrix representing $\Omega^\dagger$ is given by the transpose conjugate of the matrix
+    representing $\Omega$.
+\end{theorem}
+\begin{proof}
+    \begin{equation*}
+        \left(\Omega^\dagger\right)_i\:^j = \bra{i}\Omega^\dagger\ket{j} = \scalar{\Omega i}{j} = \scalar{j}{\Omega i}^* = 
+        \bra{j}\Omega\ket{i}^* = \left(\Omega^*\right)^j\:_i
+    \end{equation*}
+\end{proof}
+
+\begin{theorem}
+    The adjoint of a product is the product of the adjoints in reverse:
+    \begin{equation}
+        \left(\Omega\Lambda\right)^\dagger=\Lambda^\dagger\Omega^\dagger
+    \end{equation}
+\end{theorem}
+\begin{proof}
+    Let's consider $\bra{\Omega\Lambda V}$. First we treat $\Omega\Lambda$ as one operator and get
+    \begin{equation*}
+        \bra{\Omega\Lambda V} = \bra{V}\left(\Omega\Lambda\right)^\dagger
+    \end{equation*}
+    Next we treat $\Lambda$ and $\Omega$ as two distinct operators applied sequentially
+    \begin{equation*}
+        \bra{\Omega\Lambda V} = \bra{\Lambda V}\Omega^\dagger = \bra{V}\Lambda^\dagger\Omega^\dagger
+    \end{equation*}
+    Comparing the two equations and considering that $\ket{V}$ is a generic ket,
+    we get the desired result $\left(\Omega\Lambda\right)^\dagger=\Lambda^\dagger\Omega^\dagger$.
+\end{proof}
+
+
+When a product of operators, bras, kets, and explicit numerical coefficients is encountered, reverse
+the order of all factors and make the substitutions
+\begin{eqnarray}
+    \nonumber
+    \Omega&\leftrightarrow&\Omega^\dagger
+    \\
+    \ket{V}&\leftrightarrow&\bra{V}
+    \\\nonumber
+    a&\leftrightarrow&a^*
+\end{eqnarray}
+
+\begin{example}
+    Let's consider the following equation
+    \begin{equation*}
+        a_1\ket{V_1} = a_2\ket{V_2} + a_3\ket{V_3}\scalar{V_4}{V_5}+ a_4\Omega\Lambda\ket{V_6} 
+    \end{equation*}
+    Its adjoint is
+    \begin{equation*}
+        \bra{V_1}a^*_1 = \bra{V_2}a^*_2+ \scalar{V_4}{V_5}\bra{V_3}a^*_3+ \bra{V_6}\Lambda^\dagger\Omega^\dagger a_4^*
+    \end{equation*}
+    Of course, there is no real need to reverse the location of the scalars $a$ except in the interest of uniformity.
+\end{example}
+
 \end{document}
