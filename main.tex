@@ -446,4 +446,58 @@ Since $\ket{V}$ is a generic vector, this equality must hold for all $\ket{V}\in
     \end{equation*}
 \end{proof}
 
+\subsection{Matrix elements}
+We have seen that an abstract vector can be represented in a basis by an n-tuple of numbers, called its components,
+in terms of which all vector operations can be carried out.
+We shall now see that in the same manner a linear operator can be represented in a basis by an $n\times n$
+matrix.
+
+Let's consider $\ket{V'}=\Omega\ket{V}$. In terms of the components on basis $\ket{i}$, this can be rewritten
+\begin{equation*}
+    \sum v'_i\ket{i} = \sum v_i\Omega\ket{i}
+\end{equation*}
+Taking the inner product with $\ket{j}$ of both sides gives an expression for $v'_j$
+\begin{equation*}
+    v'_j = v_j\bra{j}\Omega\ket{i}
+\end{equation*}
+And therefore
+\begin{equation*}
+    \sum v'_i\ket{i} = \sum v_j\bra{j}\Omega\ket{i}
+\end{equation*}
+If we define the matrix
+\begin{equation}
+    \Omega^j\:_i\equiv \bra{j}\Omega\ket{i}
+\end{equation}
+We can write the transformed vector $\ket{V'}=\Omega\ket{V}$ as the matrix multiplication
+\begin{equation}
+    (v')^j=\Omega^j\:_iv^i    
+\end{equation}
+where we used the Einstein's sum convention.
+
+\begin{remark}
+    A mnemonic: the elements of the $i$-th column of $\Omega^j\:_i$ are simply the components of the $i$-th
+transformed basis vector $\ket{i'}=\Omega\ket{i}$ in the given basis.
+\end{remark}
+
+\begin{example}
+    Let's consider rotations in 3D space, i.e. the operator $R\left(\frac{1}{2}\pi \hat i\right)$ that rotates
+    a vector by $\frac{1}{2}\pi$ about the unit vector $\hat i$. Notice that this operator is linear.
+    
+    Let us consider the action of this operator on the three unit vectors $\hat i$, $\hat j$, and $\hat k$, which
+    in our notation will be denoted by $\ket{1}$, $\ket{2}$, $\ket{3}$
+    \begin{eqnarray*}
+        \left(\frac{1}{2}\pi \hat i\right)\ket{1} &=& \ket{1} \\
+        \left(\frac{1}{2}\pi \hat i\right)\ket{2} &=& \ket{3} \\
+        \left(\frac{1}{2}\pi \hat i\right)\ket{3} &=& -\ket{2} \\
+    \end{eqnarray*}
+
+    Following our mnemonic, the matrix representation of $R\left(\frac{1}{2}\pi \hat i\right)$ is
+    \begin{equation*}
+        R\left(\frac{1}{2}\pi \hat i\right) \leftrightarrow \left[\begin{array}{ccc}
+            1&0&0\\
+            0&0&-1\\
+            0&1&0
+        \end{array}\right]
+    \end{equation*}
+\end{example}
 \end{document}
