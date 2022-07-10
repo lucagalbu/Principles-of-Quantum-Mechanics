@@ -371,6 +371,79 @@ Taking the inner product with a specific base vector $\ket{j}$ leads to $\scalar
 
     The proof for the triangle inequality is similar, starting with $|V+W|^2$ and considering $\mbox{Re}\scalar{V}{W}\leq|\scalar{V}{W}|$.
 \end{proof}
+
+\section{Linear operators}
+An operator $\Omega$ is an instruction to transform a vector $\ket{V}$ into another vector $\ket{V'}$. This is represented by writing
+$\Omega\ket{V}=\ket{V'}$.
+
+\begin{definition}[Linear operator]
+A \textit{linear operator} is an operator that satisfies
+\begin{equation*}
+    \Omega(\alpha\ket{V}+\beta\ket{W}) = \alpha\Omega\ket{V} + \beta\Omega\ket{W}
+\end{equation*}
 \end{definition}
+
+\begin{remark}
+    A nice feature of linear operators is that once their action on the basis vectors is known, their action on any vector in the space
+    is determined. If we are given a basis $\ket{i}$ for our space, then the action of $\Omega$ on any vector $\ket{V}$ is given 
+    by $\Omega\ket{V} = \sum v_i\Omega\ket{i}$
+\end{remark}
+
+The \textit{product of two operators} stands for the instruction that the action of the two operators be carried out in sequence.
+Notice that the order of the operations matters, i.e., in general $\Omega\Lambda\neq\Lambda\Omega$. An example are rotations in 3D space.
+\begin{definition}[Commutator]
+    The commutator of two operators is defined as 
+    \begin{equation*}
+        [\Omega,\Lambda] = \Omega\Lambda-\Lambda\Omega
+    \end{equation*}
+\end{definition}
+
+\begin{theorem}
+    The commutator satisfies 
+    \begin{equation}
+        [\Omega, \Lambda\Theta] = \Lambda[\Omega, \Theta] + [\Omega, \Lambda]\Theta
+    \end{equation}        
+\end{theorem}
+\begin{proof}
+    Given a generic vector $\ket{V}$, we have
+    \begin{equation*}
+        [\Omega, \Lambda\Theta]\ket{V} = \Omega\Lambda\Theta\ket{V} - \Lambda\Theta\Omega\ket{V}
+    \end{equation*}
+Using the fact that $\Omega\Lambda = [\Omega,\Lambda]+\Lambda\Omega$ we can rewrite the previous equality as
+\begin{equation*}
+    [\Omega, \Lambda\Theta]\ket{V} = 
+    [\Omega,\Lambda]\Theta\ket{V}+\Lambda\Omega\Theta\ket{V} - \Lambda\Theta\Omega\ket{V} =
+    [\Omega,\Lambda]\Theta\ket{V} + \Lambda[\Omega,\Theta]\ket{V}
+\end{equation*}
+Since $\ket{V}$ is a generic vector, this equality must hold for all $\ket{V}\in V$.
+\end{proof}
+
+\begin{definition}
+    The \textit{inverse} of $\Omega$, denoted by $\Omega^{-1}$, is defined such that $\Omega\Omega^{-1}=\Omega^{-1}\Omega=1$.
+\end{definition}
+\begin{remark}
+    For linear operators acting on a vector space $V^n$ with $n$ finite, it can be shown that
+    $\Omega\Omega^{-1}=1$ iif $\Omega^{-1}\Omega=1$.
+\end{remark}
+\begin{theorem}
+    The inverse of a product of operators is given by
+    \begin{equation}
+        \left(\Omega\Lambda\right)^{-1} = \Lambda^{-1}\Omega^{-1}
+    \end{equation}
+\end{theorem}
+\begin{proof}
+    $\left(\Omega\Lambda\right)^{-1}$ is defined such that 
+    \begin{equation*}
+        \left(\Omega\Lambda\right)^{-1}\Omega\Lambda=1
+    \end{equation*}
+    If we multiply both sides by $\Lambda^{-1}$ to the right, we get 
+    \begin{equation*}
+        \left(\Omega\Lambda\right)^{-1}\Omega = \Lambda^{-1}
+    \end{equation*}
+    Multiplying both sides by $\Omega^{-1}$ to the right gives
+    \begin{equation*}
+        \left(\Omega\Lambda\right)^{-1} = \Lambda^{-1}\Omega^{-1}
+    \end{equation*}
+\end{proof}
 
 \end{document}
