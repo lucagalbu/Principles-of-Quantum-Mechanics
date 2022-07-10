@@ -466,6 +466,7 @@ And therefore
 \end{equation*}
 If we define the matrix
 \begin{equation}
+    \label{eq:matrix_operator}
     \Omega^j\:_i\equiv \bra{j}\Omega\ket{i}
 \end{equation}
 We can write the transformed vector $\ket{V'}=\Omega\ket{V}$ as the matrix multiplication
@@ -500,4 +501,54 @@ transformed basis vector $\ket{i'}=\Omega\ket{i}$ in the given basis.
         \end{array}\right]
     \end{equation*}
 \end{example}
+
+\subsubsection{Projection operator}
+We saw that a vector $\ket{V}$ can be expanded on a basis with the formula $\ket{V}=\sum\ket{i}\bra{i}\ket{V}$.
+Each single term of the expansions, $\ket{V}=\ket{i}\bra{i}\ket{V}$ can be interpreted as a sort of projection of the 
+vector onto the $i$-th basis vector. And this leads to the following definition
+\begin{definition}[Projection operator]
+    The operator $P_i = \ket{i}\bra{i}$ is a linear operator called the \textit{projection operator} for the ket $\ket{i}$.
+\end{definition}
+\begin{theorem}[Completeness]
+    The projection operator satisfies the completeness relation, i.e., 
+    \begin{equation}
+        \label{eq:completness}
+        \sum P_i =\sum\ket{i}\bra{i }= 1
+    \end{equation}
+\end{theorem}
+\begin{proof}
+    A generic vector $\ket{V}$ can be expanded on a basis using the projection operators
+    \begin{equation*}
+        \ket{V} = \sum P_i\ket{V} = \left(\sum P_i\right)\ket{V} 
+    \end{equation*}
+    Since $\ket{V}$ is a generic vector, it must hold that $\left(\sum P_i\right)=1$.
+\end{proof}
+\begin{remark}
+    The completeness relation says that the sum of the projections of a vector along all the $n$
+    directions equals the vector itself.
+\end{remark}
+\begin{remark}
+    Pojection operators corresponding to the basis vectors obey $P_jP_i=\delta_{ij}$.
+    This tells us that once $P_i$ projects out the part of $\ket{V}$ along $\ket{i}$, further applications of $P_i$, make
+    no difference; and the subsequent application of $P_j$ with $j\neq i$ will result in zero, since a vector entirely
+    along $\ket{i}$ cannot have a projection along a perpendicular direction $\ket{j}$.
+\end{remark}
+
+The matrix elements of $P_i$ are given by Eq. \ref{eq:matrix_operator}
+\begin{equation*}
+    \left(P_i\right)^k\:_l = \bra{k}P_i\ket{l} = \scalar{k}{l}\delta_{il} = \delta_{kl}\delta_{il} = \delta^k\:_i\delta_{il}
+\end{equation*}
+This matrix has $0$ everywhere, except for $1$ at position $(i,i)$. This is in agreement with our mnemonic that the matrix of a linear
+operator contains per columns the components of the transformed basis vectors. In the case of the projection operator $P_i$, all base 
+vectors except $\ket{i}$ gives $\ket{0}$. But the base vector $\ket{i}$  stays untrasformed.
+
+The matrix also arises if we consider $\ket{i}\bra{i}$ component-wise. $\ket{i}$ is a column vector of length $n$, while $\bra{i}$ 
+is a row vector of dimension $n$. Therefore, $\ket{i}\bra{i}$ is the multiplication of a $1\times n$ matrix with a $n\times 1$ matrix,
+which gives the $n\times n$ matrix reported above.
+
+\begin{remark}
+    The completeness relation, Eq. \ref{eq:completness} says that when all the $P_i$ are added, the diagonal fills out to give the
+    identity. If we form the sum over just some of the projection operators, we get the operator which projects a given vector into the 
+    subspace spanned by just the corresponding basis vectors.
+\end{remark}
 \end{document}
