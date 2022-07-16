@@ -483,6 +483,7 @@ transformed basis vector $\ket{i'}=\Omega\ket{i}$ in the given basis.
 \end{remark}
 
 \begin{example}
+    \label{example:rotation_matrix}
     Let's consider rotations in 3D space, i.e. the operator $R\left(\frac{1}{2}\pi \hat i\right)$ that rotates
     a vector by $\frac{1}{2}\pi$ about the unit vector $\hat i$. Notice that this operator is linear.
     
@@ -662,4 +663,81 @@ to the change
 The first case is called \textit{active transformation}, while the second one \textit{passive transformation}.
 Later we will see that the physics in quantum theory lies in the matrix elements of operators, and that active and
 passive transformations provide us with two equivalent ways of describing the same physical transformation.
+
+\subsection{The eigenvalue problem}
+When some linear operator $\Omega$ acts on an arbitrary nonzero ket $\ket{V}$, the ket will suffer a nontrivial 
+change, i.e., $\Omega\ket{V}$ will not be simply related to $\ket{V}$.
+So much for an arbitrary ket. Each operator, however, has certain kets of its own, on which its action is simply
+that of rescaling.
+\begin{definition}[Eigenvalues and eigenkets]
+    Given a linear operator $\Omega$, any ket $\ket{V}$, such that
+    \begin{equation}
+        \label{eq:eigenvalue}
+        \Omega\ket{V}=\omega\ket{V}
+    \end{equation}
+is called an \textit{eigenket} of $\Omega$ with \textit{eigenvalue} $\omega$.
+\end{definition}
+
+We want now find a general approach to find all eigenvalues and eigenkets of a linear operator.
+
+\begin{theorem}
+    The condition for nonzero eigenvectors is
+    \begin{equation}
+        \det  \left(\Omega-\omega I\right) = 0
+    \end{equation}
+\end{theorem}
+\begin{proof}
+    We start by rewriting \ref{eq:eigenvalue} as 
+\begin{equation*}
+        \left(\Omega-\omega I\right)\ket{V}=\ket{0}
+    \end{equation*}
+    From which it follows
+    \begin{equation*}
+        \ket{V} = \left(\Omega-\omega I\right)^{-1}\ket{0}
+    \end{equation*}
+    If the operator $\left(\Omega-\omega I\right)$ is finite (i.e. its matrix elements are finite), there is now way it can
+    act on the null vector to give a nonzero ket $\ket{V}$. So $\left(\Omega-\omega I\right)$ cannot be finite.
+    To find under which conditions the operator is not finite, let's recall that the inverse of a matrix is given by
+    \begin{equation*}
+        M^{-1}=\frac{\mbox{cofactor}\,M^T}{\det\,M}
+    \end{equation*}
+    where the cofactor of a matrix $M$ is the matrix whose element $(i,j)$ is $(-1)^{i+j}M_{i,j}$, and $M_{i,j}$ is the $(i,j)$ minor,
+    i.e., the determinant of $M$ with the $i$-th row and $j$-th column removed.
+
+    It is clear that the cofactor is always finite if $M$ is finite. So the only possibility to have an non finite inverse matrix
+    is that the determinant is zero. That is, $\det  \left(\Omega-\omega I\right) = 0$.
+\end{proof}
+
+\begin{theorem}
+    Every operator in $V^n(\mathbb{C})$ has $n$ eigenvalues, not necessarily distinct.
+\end{theorem}
+\begin{proof}
+    To find the eigenvalues, we need to set to zero the determinant of a $n\times n$ matrix. Since the determinant of a $n\times n$
+    matrix is a polynomial of order $n$, the fundamental theorem of algebra tells us that it can be decomposed as 
+    \begin{equation*}
+        \det  \left(\Omega-\omega I\right) = (\omega_1-\omega)(\omega_2-\omega)\dots(\omega_n-\omega)=0
+    \end{equation*}
+    where the $\omega_i$ are not necessarily distinct. This equation has $n$ solutions in $\mathbb{C}$.
+\end{proof}
+
+\begin{example}
+    Let's find the eigenvalues and eigenvectors of the rotation matrix. We saw in Example \ref{example:rotation_matrix} that the
+    matrix representing a rotation of $pi/2$ around the x-axis is given by
+    \begin{equation*}
+        R\left(\frac{1}{2}\pi \hat i\right) \leftrightarrow \left[\begin{array}{ccc}
+            1&0&0\\
+            0&0&-1\\
+            0&1&0
+        \end{array}\right]
+    \end{equation*}
+    By setting the determinant to zero, we find $\omega=1,\,\pm i$. The eigenvalue $1$ has eigenvector $\ket{1}$. This means that a 
+    vector aligned along $x$ doesn't change under a rotation around $x$. The complex values correspond to the vectors 
+    \begin{equation*}
+        \ket{\pm i} \rightarrow \frac{1}{\sqrt{2}}\left[\begin{array}{c}
+            0\\
+            \pm i\\
+            0
+        \end{array}\right]
+    \end{equation*}
+\end{example}
 \end{document}
