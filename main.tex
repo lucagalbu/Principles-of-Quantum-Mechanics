@@ -647,4 +647,19 @@ the order of all factors and make the substitutions
     In fact, on a real vector space, the unitarity condition becomes $U^\dagger=U^T$, which defines an orthogonal or
     rotation matrix.
 \end{remark}
+
+\subsubsection{Active and passive transformations}
+Suppose we subject all the vectors in a space to a unitary transformation $\ket{V}\rightarrow U\ket{V}$.
+The matrix elements of any operator $\Omega$ are transformed as 
+\begin{equation*}
+    \bra{W}\Omega\ket{V}\rightarrow \bra{UW}\Omega\ket{UV}=\bra{W}U^\dagger\Omega U\ket{V}
+\end{equation*}
+It is clear that we would obtain the same matrix if we left the vectors alone and subjected all operators
+to the change
+\begin{equation*}
+    \Omega\rightarrow U^\dagger\Omega U
+\end{equation*}
+The first case is called \textit{active transformation}, while the second one \textit{passive transformation}.
+Later we will see that the physics in quantum theory lies in the matrix elements of operators, and that active and
+passive transformations provide us with two equivalent ways of describing the same physical transformation.
 \end{document}
