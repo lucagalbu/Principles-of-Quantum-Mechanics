@@ -617,4 +617,34 @@ the order of all factors and make the substitutions
     Of course, there is no real need to reverse the location of the scalars $a$ except in the interest of uniformity.
 \end{example}
 
+\begin{definition}[Hermitian and unitary  operators]
+    An operator is called 
+    \begin{enumerate}
+        \item \textit{Hermitian} if $\Omega^\dagger=\Omega$.
+        \item \textit{Anti-Hermitian} if $\Omega^\dagger=-\Omega$.
+        \item \textit{Unitary} if $\Omega\Omega^\dagger=1$.
+    \end{enumerate}
+\end{definition}
+
+\begin{remark}
+    Hermitian and anti-Hermitian operators are the equivalent of pure real and pure imaginary complex numbers. Unitary operators
+    are the equivalent of complex numbers of unit modulus $e^{i\theta}$.
+\end{remark}
+
+\begin{theorem}
+    Unitary operators preserve the inner product between the vectors they act on.
+\end{theorem}
+\begin{proof}
+    Let $\ket{V'_1}=U\ket{V_1}$ and $\ket{V'_2}=U\ket{V_2}$. Then 
+    \begin{equation*}
+        \scalar{V'_1}{V'_2} = \bra{V_1}U^\dagger U\ket{V_2} = \scalar{V_1}{V_2}
+    \end{equation*}
+\end{proof}
+
+\begin{remark}
+    Unitary operators are the generalizations of rotation operators from $V^3(\mathbb{R})$ to $V^3(\mathbb{C})$,
+    for just like rotation operators in three dimensions, they preserve the lengths of vectors and their dot products. 
+    In fact, on a real vector space, the unitarity condition becomes $U^\dagger=U^T$, which defines an orthogonal or
+    rotation matrix.
+\end{remark}
 \end{document}
