@@ -740,4 +740,172 @@ We want now find a general approach to find all eigenvalues and eigenkets of a l
         \end{array}\right]
     \end{equation*}
 \end{example}
+
+\subsubsection{Hermitian operators in $V^n(\mathbb{C})$}
+\begin{theorem}
+    The eigenvalues of an Hermitian operator are real.
+\end{theorem}
+\begin{proof}
+    Let $\Omega\ket{\omega}=\omega\ket{\omega}$. It follows
+    \begin{equation*}
+        \bra{\omega}\Omega\ket{\omega}=\omega\scalar{\omega}{\omega}
+    \end{equation*}
+    The adjoint of this equation is
+    \begin{equation*}
+        \bra{\omega}\Omega^{\dagger}\ket{\omega}=\omega^*\scalar{\omega}{\omega}
+    \end{equation*}
+    But since $\Omega^{\dagger}=\Omega$, the previous two equations imply $\omega^*=\omega$.
+\end{proof}
+
+\begin{theorem}
+    To every Hermitian operator $\Omega$, there exists (at least) a basis consisting of its orthonormal eigenvectors. It 
+    is diagonal in this eigenbasis and has its eigenvalues as its diagonal entries.
+\end{theorem}
+\begin{proof}
+    The characteristic equation must have at least one root, call it $\omega_1$. The corresponding eigenvector is $\ket{\omega_1}$.
+    Consider the subspace $\mathbb{V}^{n-1}_{\perp 1}$ of all vectors orthogonal to $\ket{\omega_1}$. Let us choose as our basis
+    $\ket{\omega_1}$ and any $(n-1)$ orthonormal vectors in $\mathbb{V}^{n-1}_{\perp 1}$. In this basis, $\Omega$ has the following
+    form
+    \begin{equation*}
+        \Omega\leftrightarrow\left[\begin{array}{ccccc}
+            \omega_1 &0 &0 &\dots&0\\
+            0\\
+            0\\
+            \vdots\\
+            0
+        \end{array}\right]
+    \end{equation*}
+    The first column is simply the image of $\ket{\omega_1}$ under $\Omega$, while the first row comes from the hermiticity.
+    The characteristic equation now takes the form
+    \begin{equation*}
+        (\omega-\omega_1)(\mbox{determinant of the minor $\Omega_{1,1}$})=0
+    \end{equation*}
+    The determinant of the minor is a polynomial and must generate one root, $\omega_2$ and a corresponding eigenvector $\ket{\omega_2}$.
+    Define the subspace  $\mathbb{V}^{n-2}_{\perp 2}$ of all the vectors in  $\mathbb{V}^{n-1}_{\perp 1}$ orthogonal to $\ket{\omega_2}$, 
+    and repeat the same procedure as before. Finally the matrix becomes, in the basis 
+    $\ket{\omega_1},\,\ket{\omega_2},\,\ket{\omega_3},\,\dots,\,\ket{\omega_n}$
+    \begin{equation*}
+        \Omega\leftrightarrow\left[\begin{array}{ccccc}
+            \omega_1 &0 &0 &\dots&0\\
+            0 &\omega_2&0& \dots &0\\
+            0 &0 &\omega_3& \dots &0\\
+            \vdots&&&&\vdots\\
+            0 &0&0& \dots &\omega_n\\
+        \end{array}\right]
+    \end{equation*}
+    Since every $\ket{\omega_i}$ was chosen from a space that was orthogonal to the previous one, the vectors
+    $\ket{\omega_1},\,\ket{\omega_2},\,\ket{\omega_3},\,\dots,\,\ket{\omega_n}$ are $n$ orthonormal vectors, i.e. a basis.
+\end{proof}
+In stating the previous theorem, it was indicated that there might exist more than one basis of eigenvectors that diagonalizes
+$\Omega$. This happens if there is degeneracy. Suppose $\omega_1=\omega_2=\omega$. Then we have two orthonormal vectors obeying
+\begin{eqnarray*}
+    \Omega\ket{\omega_1} &=& \omega\ket{\omega_1} \\
+    \Omega\ket{\omega_2} &=& \omega\ket{\omega_2}
+\end{eqnarray*} 
+It follows that 
+\begin{equation*}
+    \Omega\left[\alpha\ket{\omega_1}+\beta\ket{\omega_2}\right]=\omega\left[\alpha\ket{\omega_1}+\beta\ket{\omega_2}\right]
+\end{equation*}
+Since $ket{\omega_1}$ and $ket{\omega_2}$ are orthonormal, we find that there is a whole two-dimensional subspace, the elements
+of which are eigenvectors of $\Omega$ with eigenvalue $\omega$. Therefore, besides $ket{\omega_1}$ and $ket{\omega_2}$ there exists an 
+infinity of orthonormal pairs from which we may select any pair in forming the eigenbasis of $\Omega$.
+Notice that in the face of degeneracy, $\ket{\omega_i}$ no longer refers to a single ket but
+to a generic element of the eigenspace $\mathbb{V}^m_{\omega_i}$. To refer to a particular element, we must
+use the symbol $\ket{\omega_i,\,\alpha}$, where $\alpha$ labels the ket within the eigenspace.
+\begin{example}
+    Let's find an orthonormal basis for 
+    \begin{equation*}
+        \Omega\leftrightarrow\left[\begin{array}{ccc}
+            1 &0 &1\\
+            0 &2&0\\
+            1 &0 &1\\
+        \end{array}\right]
+    \end{equation*}
+    The characteristic equation is $\omega(2-\omega)^2$, whose solutions are $\omega_1=2$ (with multiplicity 2), $\omega_2$=0.
+    The eigenvector corresponding to $\omega_2=0$ is
+    \begin{equation*}
+        \ket{\omega=0}\leftrightarrow\frac{1}{\sqrt{2}}\left[
+            \begin{array}{c}
+                1\\
+                0\\
+                -1
+            \end{array}\right]
+    \end{equation*}
+    For $\omega=2$ we have
+    \begin{eqnarray*}
+        x_1-x_3&=&0 \\
+        0&=&0
+    \end{eqnarray*}
+    We now only have one equation for three variables and every vector of the form
+    \begin{equation*}
+        \left[\begin{array}{c}
+            a\\
+            b\\
+            a
+        \end{array}\right]
+    \end{equation*}
+    is an eigenvector orthogonal to $\ket{\omega=0}$. To form an orthonormal basis where $\Omega$ is diagonal, we can e.g. choose
+    \begin{equation*}
+        \ket{\omega=2,\,1}\leftrightarrow\frac{1}{\sqrt{3}}
+        \left[\begin{array}{c}
+            1\\
+            1\\
+            1
+        \end{array}\right]
+    \end{equation*}
+    and
+    \begin{equation*}
+        \ket{\omega=2,\,2}\leftrightarrow\frac{1}{\sqrt{6}}
+        \left[\begin{array}{c}
+            1\\
+            -2\\
+            1
+        \end{array}\right]
+    \end{equation*}
+    However, any two vectors belonging to the subspace spanned by $\ket{\omega=2,\,1}$ and $\ket{\omega=2,\,2}$ can be chosen to form
+    an orthonormal basis together with $\ket{\omega=0}$.
+\end{example}
+\begin{theorem}
+    Every Hermitian matrix on $\mathbb{V}^n(\mathbb{C})$ can be diagonalized by a unitary change of basis. Equivalently,
+    If $\Omega$ is a Hermitian matrix, there exists a unitary matrix $U$ (built out of the eigenvectors of $\Omega$) such that 
+    $U^\dagger\Omega U$ is diagonal.
+\end{theorem}
+\begin{proof}
+    Consider a Hermitian operator $\Omega$ on $\mathbb{V}^n(\mathbb{C})$ represented as a matrix in some
+    orthonormal basis $\ket{1}\,,\ket{2}\,,\dots,\,\ket{n}$. If we trade this basis for the eigenbasis
+    $\ket{\omega_1}\,,\ket{\omega_2}\,,\dots,\,\ket{\omega_n}$, the matrix representing $\Omega$ will become diagonal. 
+    Now the operator $U$ inducing the change of basis $\ket{\omega_i}=U\ket{i}$ is unitary, because its matrix contains by
+    columns the components of the eigenvectors $\ket{\omega_i}$ that are orthonormal.
+\end{proof}
+\begin{theorem}
+    If $\Omega$ and $\Lambda$ are two commuting Hermitian operators, there exists (at least) a basis of common eigenvectors that 
+    diagonalizes them both.
+\end{theorem}
+\begin{proof}
+    We will show the proof only in the case one of the two operators is not degenerate. However, the theorem holds also in case both 
+    operators are degenerate.
+
+    Let's suppose $\Omega$ is not degenerate, i.e. to a given eigenvalue there is only one eigenvector, up to a scale factor. Consider
+    one of its eigenvector
+    \begin{equation*}
+        \Omega\Lambda\ket{\omega}=\Lambda\Omega\ket{\omega}=\omega\Lambda\ket{\omega}
+    \end{equation*}
+    That is, $\Lambda\ket{\omega}$ is an eigenvector of $\Omega$ with eigenvalue $\omega$. But since $\Omega$ is not degenerate,
+     $\Lambda\ket{\omega}$ must be proportional to $\ket{\omega}$, i.e. $\Lambda\ket{\omega}=\lambda\ket{\omega}$.
+     Since every eigenvector of $\Omega$ is also eigenvector of $\Lambda$, the basis $\ket{\omega_i}$ diagonalizes also $\Lambda$.
+\end{proof}
+\begin{remark}
+    Here is an intuitive argument of what happens if $\Omega$ and $\Lambda$ are both degenerate.
+
+    If $\Omega$ and $\Lambda$ are both degenerate, there exists a subspace of dimension $m\leq n$ where each vector is an eigenvector of
+    $\Omega$ with eigenvalue $\omega$ and any set of $m$ orthonormal vectors will diagonalize $\Omega$. In this subspace,
+    $\Lambda$ is still Hermitian, and, if restricted to this subspace, it is not degenerate, we can choose the set of $m$ eigenvectors such 
+    that they are distinct eigenvectors of $\Lambda$, i.e. they are of the form $\ket{\omega,\,\lambda_i}$. 
+    Thus, $\Lambda$ removes the ambiguity in choosing an eigenbasis.
+
+    If in one of these subspaces $\Lambda$ is also degenerate, then we cannot entirely remove the ambiguity. But we might find a third 
+    operator $\Gamma$ that commutes with $\Omega$ and $\Lambda$ and that is not degenerate. In this case the eigenvectors will have the 
+    form $\ket{\omega,\,\lambda,\,\gamma_i}$.
+\end{remark}
+
 \end{document}
