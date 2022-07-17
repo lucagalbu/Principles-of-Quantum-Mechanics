@@ -908,4 +908,142 @@ use the symbol $\ket{\omega_i,\,\alpha}$, where $\alpha$ labels the ket within t
     form $\ket{\omega,\,\lambda,\,\gamma_i}$.
 \end{remark}
 
+\subsubsection{Classical coupled harmonic oscillator}
+Consider two equal masses $m$ linked by a spring of elastic constant $k$. Each mass is also connected to e rigid wall with a spring of 
+constant $k$. If we call $x_1(t)$ and $x_2(t)$ the displacement of the two masses from their equilibrium positions, we see that
+\begin{subequations}
+    \label{eq:classic_ho_diff_eq}
+    \begin{eqnarray}
+        \ddot{x}_1(t) &=& -2\frac{k}{m}x_1(t) + \frac{k}{m}x_2(t) \\
+        \ddot{x}_2(t) &=& -2\frac{k}{m}x_2(t) + \frac{k}{m}x_1(t)
+    \end{eqnarray}
+\end{subequations}
+This equation can be written in matrix form
+\begin{equation}
+    \label{eq:classic_ho_diff_eq_vect}
+    \ket{\ddot{x}(t)} = \Omega\ket{x(t)}
+\end{equation}
+Let's consider the basis vectors $\ket{1}$ and $\ket{2}$, where $\ket{x(t)}$ is given by $\left[x_1(t),\,x_2(t)\right]$. Then
+\begin{equation*}
+    \ket{x(t)} = \scalar{1}{x(t)}\ket{1} + \scalar{2}{x(t)}\ket{2} = x_1(t)\ket{1} + x_2(t)\ket{2}
+\end{equation*}
+If $x_2(t)=0$ and $x_1(t)=1$, then $\ket{x(t)} = \ket{1}$. Therefore, the two basis vectors have the following physical significance
+\begin{eqnarray*}
+    \ket{1}&\leftrightarrow&\left[\begin{array}{c}
+        1\\
+        0
+    \end{array}\right] \leftrightarrow\left[\begin{array}{c}
+        \mbox{first mass displaced by unity}\\
+        \mbox{second mass undisplaced}
+    \end{array}\right]
+    \\
+    \ket{2}&\leftrightarrow&\left[\begin{array}{c}
+        0\\
+        1
+    \end{array}\right] \leftrightarrow\left[\begin{array}{c}
+        \mbox{first mass undisplaced}
+        \\
+        \mbox{second mass displaced by unity}
+    \end{array}\right]
+\end{eqnarray*}
+Eqs (\ref{eq:classic_ho_diff_eq}) are obtained by projecting Eq (\ref{eq:classic_ho_diff_eq_vect}) on the basis $\ket{1}$ and $\ket{2}$. In this basis, 
+$\Omega$ is represented by the matrix
+\begin{equation*}
+    \Omega = \left[
+        \begin{array}{cc}
+            -2\omega^2 & \omega^2\\
+            \omega^2 & -2\omega^2
+        \end{array}
+    \right]
+\end{equation*}
+where $\omega^2 = \frac{k}{m}$. 
+
+Notice that $\Omega$ is Hermitian, therefore it exists a basis $\ket{I}$ and $\ket{II}$ where the operator is diagonal, making it easier to solve the 
+system of differential equations.
+The components of these basis vectors in the basis $\ket{1}$ and $\ket{2}$ is
+\begin{subequations}
+    \begin{eqnarray}
+        \ket{I} &=& \frac{\ket{1}+\ket{2}}{\sqrt{2}} \\
+        \ket{II} &=& \frac{\ket{1}-\ket{2}}{\sqrt{2}}
+    \end{eqnarray}
+\end{subequations}
+corresponding to the eigenvalues $\omega_I^2=\omega^2$ and $\omega_{II}^2 = 3\omega^2$, respectively. In this basis, $\Omega$ is diagonal
+\begin{equation*}
+    \Omega = \left[
+        \begin{array}{cc}
+            \omega_I^2 & 0\\
+            0 & \omega_{II}^2
+        \end{array}
+    \right]
+\end{equation*}
+In the new basis we lose the physical interpreatation of the single components, but the time evolution (\ref{eq:classic_ho_diff_eq_vect}) is given
+by two decoupled differential equations. The solutions with null initial velocities are:
+\begin{equation*}
+    \begin{array}{cc}
+        x_i(t) = x_i(0)\cos(\omega_i t), & i=I,II
+    \end{array}
+\end{equation*}
+or, in vector form
+\begin{equation*}
+    \ket{x(t)} = \scalar{I}{x_0}\cos(\omega_I t)\ket{I} + \scalar{II}{x_0}\cos(\omega_{II} t)\ket{II} = 
+    U\ket{x_0}
+\end{equation*}
+
+\begin{definition}[Propagator]
+    The matrix
+    \begin{equation*}
+        U = \ket{I}\bra{I}\cos(\omega_I t) + \ket{II}\bra{II}\cos(\omega_{II} t)
+    \end{equation*}
+    is called the \textit{propagator}, because it propagates the initial state $\ket{x_0}$ to a state at a later time $\ket{x(t)}$.
+\end{definition}
+To find the time evolution of $\ket{x(t)}$ in the physical base, we simply needs to express the propagator on the basis $\ket{1}$ and $\ket{2}$
+\begin{equation*}
+    U \leftrightarrow \frac{1}{2}\left[
+        \begin{array}{cc}
+            \cos(\omega_I t)+\cos(\omega_{II} t) & \cos(\omega_I t)-\cos(\omega_{II} t) \\
+            \cos(\omega_I t)-\cos(\omega_{II} t) & \cos(\omega_I t)+\cos(\omega_{II} t) \\
+        \end{array}
+    \right]
+\end{equation*}
+Finally
+\begin{equation*}
+    \left[\begin{array}{c}
+        x_1(t) \\
+        x_2(t)
+    \end{array}\right] = 
+    \left[\begin{array}{c}
+        \frac{x_1(0)+x_2(0)}{2}\cos\left(\sqrt{\frac{k}{m}}\,t\right) + \frac{x_1(0)-x_2(0)}{2}\cos\left(\sqrt{\frac{3k}{m}}\,t\right) \\
+        \frac{x_1(0)+x_2(0)}{2}\cos\left(\sqrt{\frac{k}{m}}\,t\right) - \frac{x_1(0)-x_2(0)}{2}\cos\left(\sqrt{\frac{3k}{m}}\,t\right)
+    \end{array}\right]
+\end{equation*}
+
+The propagator depends only on the eigenvalues of the operator, but not on the initial state. This leads us to the following algorithm to 
+solve a linear differential equation in the form $\ket{\ddot{x}(t)} = \Omega\ket{x(t)}$
+\begin{enumerate}
+    \item Find the eigenvalues and eigenvectors of $\Omega$.
+    \item Construct the propagator $U$ in terms of the eigenvalues and eigenvectors.
+    \item Compute the solution as $\ket{x(t)} = U\ket{x(0)}$.
+\end{enumerate}
+
+\begin{remark}
+    The central problem in quantum mechanics is very similar to the simple example
+    that we have just discussed. The state of the system is described in quantum theory
+    by a ket $\ket{\psi}$ which obeys the Schr\"odinger equation $i\hbar\ket{\dot\psi}=H\ket{\psi}$. The algorithm to solve this equation is
+    then to solve the eigenvalue problem for $H$ and build the propagator (following some rules).
+\end{remark}
+
+There are two initial states for which the dynamics is very simple. These are simply the eigenvectors $\ket{I}$ and $\ket{II}$. Indeed, if we start from 
+$\ket{I}$ we get $\ket{x(t)} = \cos(\omega_I t)\ket{I}$. So in this case both components of the initial state oscillate with the same frequency, i.e. 
+$x_1(t)$ and $x_2(t)$ move in synchronous. The same thing applies if we started from $\ket{x(0)} 0 \ket{II}$.
+
+\begin{definition}[Normal mode]
+    A motion in which all parts of the system move sinusoidally with the same frequency and with a fixed phase relation is called \textit{normal mode}.
+\end{definition}
+
+The pysical meaning of these two initial states is clear if we consider their projection on the physical basis $\ket{1}$ and $\ket{2}$. 
+$\ket{I}$ corresponds to the masses being displaced by the same amount. In this case the middle spring is niether compressed or elongated and therefore doesn't
+exert any force. The two masses oscillates only due to the force of the side springs, i.e., they oscillate with a frequency $k/m$. 
+$\ket{II}$ corresponds to the two masses being displaced by the same but opposite amount. In this case the middle spring is distorced by double the amount, i.e. $2\Delta$.
+Each mass is the subjected to a force from the lateral spring displaced by $\Delta$ and from the middle spring displaced by $2\Delta$, resulting in an oscillation 
+frequency of $3k/m$.
 \end{document}
