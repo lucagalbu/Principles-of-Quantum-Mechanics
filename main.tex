@@ -1046,4 +1046,81 @@ exert any force. The two masses oscillates only due to the force of the side spr
 $\ket{II}$ corresponds to the two masses being displaced by the same but opposite amount. In this case the middle spring is distorced by double the amount, i.e. $2\Delta$.
 Each mass is the subjected to a force from the lateral spring displaced by $\Delta$ and from the middle spring displaced by $2\Delta$, resulting in an oscillation 
 frequency of $3k/m$.
+
+\subsection{Functions of operators}
+Functions on operators are defined based on their power expansion, under the assumption that the series converges to a definite limit.
+For example consider $\exp{\Omega} = \sum_{n=0}^{\infty}\frac{\Omega^n}{n!}$. If $\Omega$ is Hermitian, we can always find an eigenbasis, and series becomes
+\begin{equation*}
+    e^\Omega=\left[
+        \begin{array}{cccc}
+            \sum_{m=0}^{\infty}\frac{\omega_1^m}{m!} &0 &\dots &0 \\
+            0 &\sum_{m=0}^{\infty}\frac{\omega_2^m}{m!} &\dots &0 \\
+            \dots &\dots &\dots &\dots \\
+            0 &0 &\dots &\sum_{n=0}^{\infty}\frac{\omega_n^n}{n!}
+        \end{array}
+    \right] = 
+    \left[
+        \begin{array}{cccc}
+            e^{\omega_1} &0 &\dots &0 \\
+            0 &e^{\omega_2} &\dots &0 \\
+            \dots &\dots &\dots &\dots \\
+            0 &0 &\dots &e^{\omega_n}
+        \end{array}
+    \right]
+\end{equation*}
+So $e^\Omega$ is well defined in this basis, and therefore in any other basis.
+\begin{remark}
+    If $\Omega$ is Hermitian, $e^{i\Omega}$ is unitary. This is an analogy with the
+    complex numbers: if $\theta$ is real, $e^{i\theta}$ has modulus one. 
+\end{remark}
+
+\begin{definition}[Derivative of an operator]
+    If an operator $\Gamma(\lambda)$ depends on a parameter $\lambda$, we can define its derivative as
+    \begin{equation*}
+        \frac{d\Gamma}{d\lambda} = \lim_{\Delta\lambda\to 0}\frac{\Gamma(\lambda+\Delta\lambda) - \Gamma(\lambda)}{\Delta\lambda}
+    \end{equation*}
+    If $\Gamma(\lambda)$ is written as a matrix in some basis, then the matrix representing $\frac{d\Gamma}{d\lambda}$ is obtained
+    by differentiating its matrix elements.
+\end{definition}
+A special case of $\Gamma(\lambda)$ we are interested in is $e^{\lambda\Omega}$, with $\Omega$ Hermitian. By going to the eigenbase of $\Omega$
+we can show that
+\begin{equation*}
+    \frac{d e^{\lambda\Omega}}{d\lambda} = e^{\lambda\Omega}\Omega
+\end{equation*}
+Conversely, we can say that if we are confronted with the differential equation
+\begin{equation*}
+    \frac{d\Gamma}{d\lambda} = \Gamma\Omega
+\end{equation*}
+the solution is 
+\begin{equation*}
+    \Gamma(\lambda) = C e^{\lambda\Omega}
+\end{equation*}
+
+\begin{remark}
+    In all the above examples, the operator behaved like if it were just a scalar. Now, the real difference between operators and scalars is that 
+    operators might not commute. If only one operator is involved, everything commute and we can treat them as scalars. If, on the other hand, more
+    than one operator in involved, the order of factors is important. For example, it is true that 
+    \begin{equation*}
+        e^{\alpha\Omega}e^{\beta\Omega} = e^{(\alpha+\beta)\Omega}
+    \end{equation*}
+    while it is not true that 
+    \begin{equation*}
+        e^{\alpha\Omega}e^{\alpha\Gamma} = e^{\alpha(\Omega+\Gamma)}
+    \end{equation*}
+    or
+    \begin{equation*}
+        e^{\alpha\Omega}e^{\beta\Gamma}e^{-\alpha\Omega} = e^{\beta\Gamma}
+    \end{equation*}
+    unless $\Omega$ and $\Gamma$ commute.
+\end{remark}
+\begin{theorem}
+    In differentiating a product of operators, the chain rule is
+    \begin{equation*}
+        \frac{d}{d\lambda}e^{\lambda\Omega}e^{\lambda\Gamma} = \Omega e^{\lambda\Omega}e^{\lambda\Gamma} + e^{\lambda\Omega}e^{\lambda\Gamma}\Gamma
+    \end{equation*}
+    Notice how $\Omega$ appears to the left, while $\Gamma$ is on the right.
+\end{theorem}
+\begin{proof}
+    Simply use the power series expansion.
+\end{proof}
 \end{document}
