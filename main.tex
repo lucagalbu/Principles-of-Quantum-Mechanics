@@ -1226,4 +1226,68 @@ In general, while deriving over the first term, it holds
     \end{equation*}
 \end{proof}
 
+
+\subsection{Derivative operator}
+An example of an infinite dimensional operator is the derivative
+\begin{equation*}
+    D\ket{f} = \ket{\frac{d}{dx}f(x)}
+\end{equation*}
+
+Let's find the matrix representation $D_{xx'} \equiv \bra{x}D\ket{x'}$.
+\begin{equation*}
+     \bra{x}D\ket{f} = \scalar{x}{\frac{d}{dx}f(x)} = 
+     \int\!\!dx'\,\bra{x}D\ket{x'}\scalar{x'}{f}dx' = 
+     \int\!\!dx'\,\bra{x}D\ket{x'}f(x')dx'
+\end{equation*}
+From which it follows
+\begin{equation}
+    \bra{x}D\ket{x'} = \delta(x-x')\frac{d}{dx} = \delta'(x-x')
+\end{equation}
+
+\subsubsection{Hermiticity}
+The derivative operator is not Hermitian
+\begin{equation*}
+    D_{x'x}^* = D_{x'x} = \delta'(x'-x) = -\delta'(x-x') = -D_{xx'} 
+\end{equation*}
+We can convert $D$ into an Hermitian matrix if we define $K\equiv -iD$. However, in an infinite dimensional space a 
+Hermitian matrix is not guaranteed to correspond to a Hermitian operator.
+Indeed, if $K$ is Hermitian, then $\bra{g}K\ket{f} = \bra{f}K\ket{g}^*$. Intorducing some completenesses:
+\begin{equation*}
+    \int_a^b\!\!dx\,\int_a^b\!\!dx'\,\scalar{g}{x}\bra{x}K\ket{x'}\scalar{x'}{f}  = 
+    \left[\int_a^b\!\!dx\,\int_a^b\!\!dx'\,\scalar{f}{x}\bra{x}K\ket{x'}\scalar{x'}{g} \right]^*
+\end{equation*}
+Replacing the matrix elements of $K$ with $K_{xx'} = \delta'(x-x')$ and integrating the left hand side by parts, we get
+\begin{equation*}
+    -ig^+(x)f(x)\vert_a^b + i\int_a^b\!\!dx\,\frac{dg^*}{dx}f(x) = i\int_a^b\!\!dx\,\frac{dg^*}{dx}f(x)
+\end{equation*}
+Therefore, the operator $K$ is Hermitian if and only if the surface term $-ig^+(x)f(x)\vert_a^b $ vanishes.
+\begin{remark}
+    In contrast to the finite-dimensional case, $K_{xx'} = K_{x'x}$ is not a sufficient condition for
+    $K$ to be Hermitian. One also needs to look at the behavior of the functions at the end points a and b. 
+\end{remark}
+In quantum mechanics, we will be interested in functions defined over the full interval $-\infty<x<\infty$. 
+Moreover, these functions will fall into two classes based on their behavior at $|x|\to\infty$: 
+the functions that vanish, and the functions behaving as $e^{ikx}$.
+If we consider matrix elements of $K$ between two functions of the first class, or one function of the first class and
+one of the second class, the surface term disappears. The matrix elements between two functions of the second class gives
+a surface term 
+\begin{equation*}
+    e^{-ik'x}e^{ikx}\vert_{-\infty}^{\infty}
+\end{equation*}
+If $k=k'$ the surface term vanishes. But if $k\neq k'$, the behavior is unclear, since $e^{-ik(x'-x)}$ oscillates without
+reaching a limit for $|x|\to\infty$. Now, there exists a way of defining a limit for such functions that cannot make up
+their minds: the limit as $|x|\to\infty$ is defined to be the average over a large interval. Following this prescription
+\begin{equation*}
+    \lim_{x\to\infty}e^{i(k-k')x} = 
+    \lim_{\substack{L\to\infty\\\Delta\to\infty}}\frac{1}{\Delta}\int_L^{L+\Delta}\!\!dx\,e^{i(k-k')x} =
+    \frac{e^{i(k-k')\Delta}}{i(k-k')}    
+\end{equation*}
+and
+\begin{equation*}
+    \lim_{x\to-\infty}e^{i(k-k')x} = 
+    \lim_{\substack{L\to\infty\\\Delta\to\infty}}\frac{1}{\Delta}\int_{-L-\Delta}^{-L}\!\!dx\,e^{i(k-k')x} =
+    \frac{e^{i(k-k')\Delta}}{i(k-k')}
+\end{equation*}
+
+Therefore, the surface term vanishes also in this case, and in the space relevant for quantum mechanics, $K$ is Hermitian.
 \end{document}
