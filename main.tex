@@ -1241,6 +1241,7 @@ Let's find the matrix representation $D_{xx'} \equiv \bra{x}D\ket{x'}$.
 \end{equation*}
 From which it follows
 \begin{equation}
+    \label{eq:hermiticity_D}
     \bra{x}D\ket{x'} = \delta(x-x')\frac{d}{dx} = \delta'(x-x')
 \end{equation}
 
@@ -1290,4 +1291,77 @@ and
 \end{equation*}
 
 Therefore, the surface term vanishes also in this case, and in the space relevant for quantum mechanics, $K$ is Hermitian.
+
+\subsubsection{Eigenvectors and eignevalues}
+The eigenvalues and eigenvectors of $K$ are defined as
+\begin{equation*}
+    K\ket{k} = k\ket{k}
+\end{equation*}
+In the $\ket{x}$ basis, the operator $K$ has the form of a derivative, therefore the above equation becomes
+\begin{equation*}
+    -i\frac{d\psi_k(x)}{dx} = k\psi_k(x)
+\end{equation*}
+and the eigenstates of $K$ are $\psi_k=\frac{1}{\sqrt{2\pi}}e^{ikx}$. Here, $k$ must be real, otherwise the function $\psi$ would diverge
+at infinity, and would not belong to the space where $K$ is Hermitian. The normalization factor is not fixed by the eigenvector equation, and it has
+been chosen to normalize the eigenvectors to a delta function.
+
+Since $K$ is Hermitian, its eigenvectors form a basis for the space. Therefore, each ket can be expanded either on the $\ket{x}$ basis or on the
+$\ket{k}$ basis:
+\begin{equation*}
+    f(k) = \scalar{k}{f} = \int\!\!dx\,\scalar{k}{x}\scalar{x}{f} = \frac{1}{\sqrt{2\pi}}\int\!\!dx f(x) e^{-ikx}
+\end{equation*}
+We can see that the Fourier transform is simply the transformation to go from the $\ket{x}$ to the $\ket{k}$ basis.
+
+We have seen that the base $\ket{k}$ comes from the operator $K$. Where does the basis $\ket{x}$ come from?
+Let's suppose that there is an operator $X$ such that $X\ket{x} = x\ket{x}$. Its action on the basis elements is
+\begin{equation*}
+    \bra{x}X\ket{x'} = x\delta(x'-x)
+\end{equation*}
+The action on any function is given by
+\begin{equation*}
+    \bra{x}X\ket{f} = \int\!\!dx'\,\bra{x}X\ket{x}\scalar{x}{f} = xf(x)
+\end{equation*}
+So, in the basis $\ket{x}$, the operator $X$ multiplies a function by $x$.
+
+In the $\ket{k}$ basis we have
+\begin{eqnarray*}
+    \bra{k'}X\ket{k} &=& \int\!\!dxdx'\,\scalar{k'}{x'}\bra{x'}X\ket{x}\scalar{x}{k} \\
+    &=& \frac{1}{2\pi}\int\!\!dx\,xe^{-i(k-k')x} \\
+    &=& i\frac{d}{dk}\left(\frac{1}{2\pi}\int\!\!dx\,e^{-i(k-k')x}\right)\\
+    &=& i\delta'(k-k')
+\end{eqnarray*}
+It follows that for a generic ket $\ket{g}$
+\begin{equation*}
+    X\ket{g(k)} = \ket{i\frac{d}{dk}g(k)}
+\end{equation*}
+
+In conclusion, we have shown that
+\begin{theorem}[$K$ and $X$ representations]
+    The operators $X$ and $K$ are related by a special interrelationship.
+    \begin{enumerate}
+        \item In the basis $\ket{x}$
+        \begin{subequations}
+            \begin{eqnarray}
+                X &\leftrightarrow& x \\
+                K &\leftrightarrow& -i\frac{d}{dx}
+            \end{eqnarray}
+        \end{subequations}
+        
+        \item In the basis $\ket{k}$
+        \begin{subequations}
+            \begin{eqnarray}
+                X &\leftrightarrow& i\frac{d}{dk} \\
+                K &\leftrightarrow& k
+            \end{eqnarray}
+        \end{subequations}
+
+        \item $f(x)$ and $f(k)$ are related by a Fourier transform.
+    \end{enumerate}
+\end{theorem}
+To find the behavior of $K$ in the $\ket{x}$ basis, we used the definition of $K$ and Eq. \ref{eq:hermiticity_D}.
+\begin{remark}
+    The previous theorem shows that there is an interrelationship between $X$ and $K$. We say that $X$ and $K$ are \textit{conjugate} of each other.    
+\end{remark}
+
+
 \end{document}
