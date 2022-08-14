@@ -1123,4 +1123,107 @@ the solution is
 \begin{proof}
     Simply use the power series expansion.
 \end{proof}
+
+\subsection{Generalization to inifinite dimensions}
+As an example of an infinite dimensional vector, consider a function defined in some interval $a\leq x\leq b$ and such that $f(x)=0$ at the 
+boundary of the interval. The specification of the function is its value at any point $x$ in the interval. We can interpret the function $f$ 
+as a ket $\ket{f}$, whose components are the value $f(x)$ the function assumes at every $a\leq x\leq b$. This vector is infinite dimensional. 
+
+For $f$ to belong to a vector space, we need to define a sum and an inner product. The sum $\ket{f} + \ket{g}$ can be defined as the pointwise 
+sum of the values of the two functions for each $x$. Since the functions vanish at the boundary of the interval, their sum also vanishes, therefore
+$\ket{f} + \ket{g}$ still belongs to the space.
+The inner product can be defined as
+\begin{equation*}
+    \scalar{f}{g}\equiv\int_a^b\!dx\, f(x)^*g(x)
+\end{equation*}
+
+In the discrete case, any vector $\ket{V}$ can be expanded on an orthonormal basis $\ket{i}$ as $\ket{V} = \sum \ket{i}\scalar{i}{V}$.
+This generalizes in the continuous case. If we have an orthonormal basis $\ket{x}$, then
+\begin{equation*}
+    \ket{f} = \int_a^b\!dx\,\ket{x}\scalar{x}{f}
+\end{equation*}
+It follows that the completeness relation becomes
+\begin{equation*}
+    \int_a^b\!dx\,\ket{x}\bra{x}=1
+\end{equation*}
+
+\subsubsection{Orthonormal basis}
+What are the basis vectors such that the components of $\ket{f}$ are the values $f(x)$ at every $x$? In the discrete case, the $i$-th basis vector would have
+all the components $0$, except the $i$-th component which is $1$. In the infinite case, let's call $\ket{x}$ one such base vector,
+we must have that $\scalar{x}{f}=\int_a^b\!dx'\, \scalar{x'}{x}f(x') = f(x)$. This can happen only if in this base 
+\begin{equation*}
+    \scalar{x'}{x} = \delta(x-x')    
+\end{equation*}
+That means, the components of a basis vector $\ket{x'}$ in the $\ket{x}$ basis are $\delta(x-x')$. The previous relation also represents the generalization of 
+orthonormality to an infinite-dimensional vector space.
+
+\begin{remark}
+    Strictly speaking, the delta function is not a function, but a distribution. It has a meaning only inside an integral. Indeed, 
+    in order to cancel out in the integral all contributions from $f(x')$ except $x'=x$, $\delta(x-x')$ must satisfy
+    \begin{equation*}
+        \delta(x-x') = \left\{\begin{array}{cc}
+            0 & x\neq x' \\
+           +\infty & x=x'
+        \end{array}\right.
+    \end{equation*}
+    (for $x'=x$, the delta must be infinite, because the integral of any finite function that is different from zero only in countable many points is null).
+    Moreover, it must satisfy
+    \begin{equation*}
+        \int_{-\infty}^{+\infty}\!dx'\,\delta(x-x') = 1
+    \end{equation*}
+    However, no function defined on the real numbers has these properties.
+\end{remark}
+
+\begin{theorem}[Derivative of the $\delta$]
+    The derivative of the delta function over the first argument (the one not integrated over) is:
+    \begin{equation*}
+        \frac{d\delta}{dx}(x-x') = \delta(x-x')\frac{d}{dx}
+    \end{equation*}
+    Over the second argument (the one integrated over) we get a minus sign
+    \begin{equation*}
+        \frac{d\delta}{dx'}(x-x') = -\delta(x-x')\frac{d}{dx'}
+    \end{equation*}
+\end{theorem}
+\begin{proof}
+    The $\delta$ is defined only inside integrals, while acting of functions. The derivative over the first argument is
+    \begin{equation*}
+        \int\!dx'\,\frac{d\delta}{dx}(x-x')f(x') = \frac{d}{dx}\int\!dx'\,\delta(x-x')f(x') = \frac{d}{dx}f(x)
+    \end{equation*}
+    For the second argument we can use integration by parts to find
+    \begin{equation*}
+        \int\!dx'\,\frac{d\delta}{dx'}(x-x')f(x') =  \delta(x-x')f(x')\vert_a^b - \int\!dx'\ \delta(x-x')\frac{df}{dx'}(x')
+    \end{equation*}
+    Where the surface term vanishes since the $\delta$ function is null.
+\end{proof}
+In general, while deriving over the first term, it holds
+\begin{equation*}
+    \frac{d^n\delta}{dx^n}(x-x') =\delta(x-x')\frac{d^n}{x^n}
+\end{equation*}
+
+
+\begin{theorem}[Exponential representation of the delta function]
+    The $\delta$ function can be represented as
+    \begin{equation*}
+        \delta(x-x') = \frac{1}{2\pi}\int_ {-\infty}^{+\infty}\!dk\,e^{ik(x'-x)}
+    \end{equation*}
+\end{theorem}
+\begin{proof}
+    Let's consider the Fourier transform of $f(x)$
+    \begin{equation*}
+        f(k) = \frac{1}{\sqrt{2\pi}}\int_ {-\infty}^{+\infty}\!dx\,e^{-ikx}f(x)
+    \end{equation*}
+    end its inverse
+    \begin{equation*}
+        f(x) = \frac{1}{\sqrt{2\pi}}\int_ {-\infty}^{+\infty}\!dk\,e^{ikx}f(k)
+    \end{equation*}
+    Then we can write
+    \begin{equation*}
+        f(x) = \int_ {-\infty}^{+\infty}\!dx'\,\left(\frac{1}{2\pi}\int_ {-\infty}^{+\infty}\!dk\,e^{ik(x'-x)}\right)f(x')
+    \end{equation*}
+    which means
+    \begin{equation*}
+        \frac{1}{2\pi}\int_ {-\infty}^{+\infty}\!dk\,e^{ik(x'-x)} = \delta(x-x')
+    \end{equation*}
+\end{proof}
+
 \end{document}
