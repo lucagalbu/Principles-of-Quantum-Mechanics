@@ -1377,4 +1377,53 @@ To find the behavior of $K$ in the $\ket{x}$ basis, we used the definition of $K
     And therefore, $\left[X,\,K\right]=iI$.
 \end{proof}
 
+\subsubsection*{Solving a differential equation}
+The equation of motion for a string of length $L$ clamped at its two ends is
+\begin{equation*}
+    \frac{\partial^2\Psi}{\partial t^2}=\frac{\partial^2\psi}{\partial x^2}
+\end{equation*}
+We see that $\frac{\partial^2}{\partial x^2} = -K^2$ and the above equation becomes
+\begin{equation*}
+    \frac{\partial^2}{\partial t^2}\ket{\Psi}=-K^2\ket{\psi}
+\end{equation*}
+
+
+This equation can be solved following the procedure outlined above for the classical coupled harmonic oscillator:
+\begin{enumerate}
+    \item Find the eigenvalues and eigenvectors of the operator $K^2$.
+    \item Compute the propagator $U(t)$ in terms of the eigenvectors of $K^2$.
+    \item $\ket{\psi(t)}=U(t)\ket{\psi(t)}$.
+\end{enumerate}
+
+The eigenvalues and eigenvector of $K^2$ are 
+\begin{equation*}
+    \begin{array}{ll}
+        \scalar{x}{m} = \psi_m(x) = \sqrt{\frac{2\pi}{L}}\sin\left(\omega_m x\right) & \omega_m=\frac{m\pi}{L}
+    \end{array}
+\end{equation*}
+where the normalization constant has been chosen such that $\psi_m$ are normalized to $\delta_{mm'}$, and the integration 
+constants have been set to satisfy the boundary conditions $\psi_m(0)=\psi_m(L)=0$. Here, $m$ is a positive integer.
+We won't consider negative $m$ since they won't lead to linearly independent solutions.
+
+If we project $\ket{\psi(t)}$ on the $\ket{m}$ basis where $K^2$ is diagonal, it is straightforward to solve the equation. 
+Under the assumption of vanishing initial velocities, we find
+\begin{equation*}
+    \scalar{m}{\psi(t)} = \scalar{m}{\psi(0)}\cos\left(\omega_m t\right)
+\end{equation*}
+Using the fact that $\ket{\psi(t)}=\sum_{m=1}^\infty\ket{m}\scalar{m}{\psi(t)}$, we find
+\begin{eqnarray*}
+    \ket{\psi(t)} &=& U(t)\ket{\psi(0)} \\
+    U(t) &=& \sum_{m=1}^\infty\ket{m}\bra{m}\cos\left(\omega_m t\right)
+\end{eqnarray*}
+
+Finally, to find $\psi(x,t)$ we project the above equation on the coordinate basis
+\begin{equation*}
+    \psi(x,t) = \scalar{x}{\psi(t)} = \bra{x}U(t)\ket{\psi(0)} = \int_0^L\!\!dx'\,U(t)_{xx'}\psi(x', 0)
+\end{equation*}
+where 
+\begin{eqnarray*}
+    U(t)_{xx'} = \bra{x}U(t)\ket{x'} &=& \sum_{m=1}^\infty\scalar{x}{m}\scalar{m}{x'}\cos\left(\omega_m t\right) \\
+    &=& \sum_{m=1}^\infty\left(\frac{2}{L}\right)\sin\left(\frac{m\pi}{L}x\right)\sin\left(\frac{m\pi}{L}x'\right)\cos\left(\omega_m t\right)
+\end{eqnarray*}
+
 \end{document}
