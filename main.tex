@@ -1426,4 +1426,95 @@ where
     &=& \sum_{m=1}^\infty\left(\frac{2}{L}\right)\sin\left(\frac{m\pi}{L}x\right)\sin\left(\frac{m\pi}{L}x'\right)\cos\left(\omega_m t\right)
 \end{eqnarray*}
 
+\chapter{Classical mechanics}
+\section{Lagrangian formalism}
+Newton's equation of motions use a local approach to determine the trajectory of a particle. Indeed, they are concerned with what the particle
+is going to do in the next infintiesimal time step. That is, according to Newton's second law
+\begin{equation*}
+    m\ddot{x} = -\frac{dV}{dx}
+\end{equation*}
+If we are given the initial position and velocity, we can calculate the trajectory as follows. From the equation of motion, we have the 
+initial acceleration $\ddot{x}(t=t_i)$ and together with the given initial velocity and position, we can compute the position and velocity
+at time $t_i + \Delta t$ as
+\begin{equation*}
+    \left\{
+        \begin{array}{c}
+            \dot{x}(t_i+\Delta t) = \dot{x}(t_i) + \ddot{x}(t_i)\Delta t \\
+            x(t_i + \Delta t) = x(t_i) + \dot{x}(t_i)\Delta t
+        \end{array}
+    \right.
+\end{equation*}
+
+In the Lagrangian formalism, the problem about the trajectory of a particle
+is posed in a different way: given that the particle is at $x_i$, and $x_f$ at times $t_i$, and
+$t_f$ , respectively, what is it that distinguishes the actual trajectory from all other
+trajectories or paths that connect these points?
+The Lagrangian approach is thus global, in that it tries to determine at one stroke the entire trajectory.
+
+The answer to the question above comes in three parts:
+\begin{enumerate}
+    \item Define a function $\mathcal{L}=\mathcal{L}(x,\dot{x},t)$ called the \textit{Lagrangian}.
+    \item For each path $x(t)$ connecting $(x_i,t_i)$ and $(x_f,t_f)$, calculate the \textit{action} $S[x8t)]$ defined by
+        \begin{equation*}
+            S[x(t)] = \int_{t_i}^{t_f}\!\!dt \mathcal{L}(x,\dot{x}, t)
+        \end{equation*}
+    \item The actual path is the one on which $S$ is an extremum.
+\end{enumerate}
+To compute which path maximises the action, let $x(t)$ be such a path. Then, $S$ is left unperturbed by any small perturbation
+$\epsilon\eta(t)$ of this path, with $\epsilon\to 0$ and $\eta(t_i)=\eta(t_f)=0$. Notice that
+\begin{equation*}
+    \frac{d\mathcal{L}}{d\epsilon} = \frac{\partial\mathcal{L}}{\partial x}\frac{dx}{d\epsilon} + 
+    \frac{\partial\mathcal{L}}{\partial \dot{x}}\frac{d\dot{x}}{d\epsilon} + \frac{\partial\mathcal{L}}{\partial t}\frac{dt}{d\epsilon}
+    =
+    \frac{\partial\mathcal{L}}{\partial x}\eta(t) + 
+    \frac{\partial\mathcal{L}}{\partial \dot{x}}\dot{\eta}(t)
+\end{equation*}
+Where we used the fact that ${\partial t}\frac{dt}{d\epsilon}=0$, since the time doesn't depend on the perturbation.
+Using this result, we have for the action
+\begin{equation*}
+    \delta S = \int_{t_i}^{t_f}\!\!dt\,\left[\frac{\partial\mathcal{L}}{\partial x}\eta(t) + 
+    \frac{\partial\mathcal{L}}{\partial \dot{x}}\dot{\eta}(t)\right] =
+    \int_{t_i}^{t_f}\!\!dt\,\left[\frac{\partial\mathcal{L}}{\partial x} - 
+    \frac{d}{dt}\frac{\partial\mathcal{L}}{\partial \dot{x}}\right]\eta(t)
+\end{equation*}
+where in the last equality we integrated by parts and we used the fact the $\eta(t_i)=\eta(t_f)=0$.
+Since $\eta$ is an arbitrary modification, $\delta S=0$ if and only if
+\begin{equation*}
+    \frac{\partial\mathcal{L}}{\partial x} - \frac{d}{dt}\frac{\partial\mathcal{L}}{\partial \dot{x}} = 0
+\end{equation*}
+This is the so called \textit{Euler-lagrange equation}.
+
+\begin{remark}
+    In the case of a mechanical particle subjected to a time-independent potential, the Langrangian assumes the simple form
+    $\mathcal{L} = T-V$, where $T$ is the kinetic energy. However, for more general forces, the Lagrangian is just some
+    function $\mathcal{L}(x,\dot{x},t)$ which yields the correct Newtonian dynamics when fed into the Euler-Lagrange equation.
+\end{remark}
+
+So why one bothers to even deal with a Lagrangian when all it does is yield Newtonian force laws in the end? There are three main points:
+\begin{enumerate}
+    \item In the Lagrangian scheme one has merely to construct a single scalar and all the equations of motion follow by simple differentiation.
+    This must be contrasted with the Newtonian scheme, which deals with vectors and is thus more complicated.
+    \item The Lagrangian and the Euler-Lagrangian have the same form in any coordinate system, while Newton's second law is only valid using Cartesian coordinates.
+    \item For this reason, we will refer to the coordinates as $q_i$, instead of $x_i$, to mark that they are not necessarily Cartesian.
+    For example, in case of a rotating system, we can simply rewrite the Lagrangian $\mathcal{L}=T-V$ in terms of the polar coordinated $\rho$ and $\theta$, and the
+    Euler-Lagrangian equations lead to
+    \begin{equation*}
+        \left\{\begin{array}{l}
+            m\ddot{\rho} = -\frac{\partial V}{\partial \rho}+m\rho\dot{\theta}^2 \\
+            m\ddot{\theta} = -\frac{1}{\rho^2}\frac{\partial V}{\partial\theta}-2m\frac{\dot{\rho}}{\rho}\dot{\theta}
+        \end{array}\right.
+    \end{equation*}
+That is, we get the Netwon's equations with the correct Corolis and centrifugal terms.
+\item Conservation laws are easily obtained in this formalism. Suppose the Lagrangian depends on a certain velocity $\dot{q}_i$, but not on the corresponding
+coordinate $q_i$. The latter is then called a \textit{cyclic coordinate}. It follows that the corresponsing \textit{conjugate momentum}
+\begin{equation*}
+    p_i=\frac{\partial L}{\partial \dot{q}_i}
+\end{equation*}
+is conserved.
+Notice that in the case of a mechanical particle subjected to a velocity independent potential the conjugate momentum coincides with the linear momentum. However, for
+more complicated Lagrangians, this is not true. An example is a particle in polar coordinates. If the potential depends on $\rho$ but not on $\theta$, then $\theta$ is a
+cyclic coordinate and the conserved conjugated momentum is the angular momentum $m\rho^2\dot{\theta}$. In contrast, if one rewrites Newton's laws in polar coordinates,
+the corresponding equations get complicated due to centrifugal and Coriolis terms.
+\end{enumerate}
+
 \end{document}
