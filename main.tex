@@ -1517,4 +1517,49 @@ cyclic coordinate and the conserved conjugated momentum is the angular momentum 
 the corresponding equations get complicated due to centrifugal and Coriolis terms.
 \end{enumerate}
 
+\subsection{Electromagnetic Lagrangian}
+The Newton's equation for a charged particle in an electromagnetic field is
+\begin{equation*}
+    \vec{F} = q\left(\vec E + \frac{\vec{v}}{c}\times\vec{B}\right)
+\end{equation*}
+Since the force depends on the velocity of the particle, we cannot simply assume that $\mathcal{L}=T-V$. The correct formula is indeed
+\begin{equation*}
+    \mathcal{L} = \frac{1}{2}m\vec{v}^2-q\phi+\frac{q}{c}\vec{v}\cdot\vec{A}
+\end{equation*}
+where the scalar and vector potentials are defined such that
+\begin{equation*}
+    \left\{\begin{array}{l}
+        \vec{E} = -\nabla\phi-\frac{1}{c}\frac{\partial\vec{A}}{\partial t} \\
+        \vec{B} = \nabla\times\vec{A}
+    \end{array} \right.
+\end{equation*}
+The Euler-Lagrange equations lead to
+\begin{equation*}
+    m\dot{\vec{v}} = -q\nabla\phi+\frac{q}{c}\left[-\frac{d\vec A}{dt}+\nabla(\vec{v}\cdot\vec{A})\right]
+\end{equation*}
+The total time derivative of $\vec{A}$ has two components: an explicit time dependence $\partial\vec{A}/\partial t$, plus an implicit one
+$(\vec{v}\cdot\nabla)\vec{A}$. The previous equation becomes then
+\begin{equation*}
+    m\dot{\vec{v}} = -q\nabla\phi-\frac{q}{c}\frac{\partial\vec{A}}{\partial t} + 
+    \frac{q}{c}\left[\nabla(\vec{v}\cdot\vec{A})-(\vec{v}\cdot\nabla)\vec{A}\right]
+\end{equation*}
+which is exactly the Newton's equation by virtue of the identity
+\begin{equation*}
+    \vec{v}\times(\nabla\times\vec{A})=\nabla(\vec{v}\cdot\vec{A})-(\vec{v}\cdot\nabla)\vec{A}
+\end{equation*}
+
+\begin{remark}
+    Although the Lagrangian seems to be $T-V$, we cannot really identify $q\phi-\frac{q}{c}\vec{v}\cdot\vec{A}$ as a potential energy. The issue is 
+    that the force due to a time-dependent electromagnetic field is not in general conservative and doesn't admit a potential. Even in the special 
+    cases where the force is conservative, only $q\phi$ can be interpreted ass the electric potential energy. The term $-\frac{q}{c}\vec{v}\cdot\vec{A}$ is
+    not a magnetic potential energy, since the magnetic force never does any work. $\mathcal{L}=T-V$ is just a useful mnemonic for the case of
+    conservative forces.
+\end{remark}
+
+\begin{remark}
+    The canonical momentum differs from the linear momentum
+    \begin{equation*}
+        \vec{p}=m\vec{v}+\frac{q}{c}\vec{A}
+    \end{equation*}    
+\end{remark}
 \end{document}
