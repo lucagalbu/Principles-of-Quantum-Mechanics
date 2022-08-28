@@ -1562,4 +1562,90 @@ which is exactly the Newton's equation by virtue of the identity
         \vec{p}=m\vec{v}+\frac{q}{c}\vec{A}
     \end{equation*}    
 \end{remark}
+
+\section*{Hamiltonian formalism}
+In the Lagrangian formalism, the motion is given by a function $\mathcal{L}$ of the independent variables $q$ and the velocities $\dot q$.
+The momenta are derived as $p=\partial\mathcal{L}/\partial\dot q$.
+
+In the Hamiltonian formalism, one exhanges the roles of $\dot q$ and $p$: one replaces the Lagrangian $\mathcal{L}(q,\dot q)$ by a 
+Hamiltonian $\mathcal{H}(q,p)$ which generates the equations of motion, and $\dot q$ becomes a derived quantity
+$\dot q=\partial\mathcal{H}/\partial\dot p$.
+
+There exists  standard procedure for effecting sucha change, called a \textit{Legendre transformation}, which is illustrated by the 
+following example. Suppose we hve a function $f(x)$ with
+\begin{equation*}
+    u(x) = \frac{df}{dx}
+\end{equation*}
+Let define the Legendre transform
+\begin{equation*}
+    g(u)=x(u)x-f(x(u))
+\end{equation*}
+Then
+\begin{equation*}
+    \frac{dg}{du} = \frac{dx}{du}u+x(u)-\frac{df}{dx}\frac{dx}{du}=x(u)
+\end{equation*}
+That is to say, in going from $f$ to $g$, we exchanged the roles of $x$ and $u$.
+
+\begin{definition}[Legendre transform]
+    Given a function $f(x_1,x_2,...,x_n)$ and its derivatives $u_i=\partial f/\partial x_i$, 
+    the \textit{Legendre transform} is given by
+    \begin{equation*}
+        g(u_1,u_2,...,u_n)=\vec{u}\cdot \vec{x}(\vec{u}) - f(\vec{x}(\vec{u}))
+    \end{equation*}
+    It can be verified that 
+    \begin{equation*}
+        \frac{\partial g}{\partial u_i}=x_i
+    \end{equation*}
+\end{definition}
+
+Applying the Legendre transform to the Lagrangian, we obtain the Hamiltonian.
+\begin{definition}[Hamiltonian]
+    The Hamiltonian is the Legendre transform of the Lagrangian
+    \begin{equation*}
+        \mathcal{H} = \vec{p}\cdot\dot{\vec{q}}-\mathcal{L}(q, \dot q)
+    \end{equation*}
+where the $\dot{q}$'s are to be written as functions of $q$'s and $p$'s.
+\end{definition}
+From the Hamiltonian, we can get the equation of motions as
+\begin{eqnarray*}
+    \dot{q}_i &=& \frac{\partial\mathcal{H}}{\partial p_i} \\
+    \dot{p}_i &=& -\frac{\partial\mathcal{H}}{\partial q_i}
+\end{eqnarray*}
+
+\begin{remark}
+    For conservative forces, $\mathcal{L}$ can be interpreted as $T-V$. Similarly, $\mathcal{H}$ becomes
+    $\vec{p}\cdot\dot{\vec{x}} - \mathcal{L} = T+V$. That is, for conservative forces, the Hamiltonian 
+    coincides with the total energy. This is not true for non conservative forces.
+\end{remark}
+
+A comparison between the Hamiltonian and the Lagrangian formalisms is igiven in Table \ref{tab:lagrange_vs_hamilton}.
+
+\begin{table}[ht]
+    \centering
+    \begin{tabular}{p{0.45\linewidth} | p{0.45\linewidth}}
+    \hline
+    Langrangian formalism & Hamiltonian formalism \\ 
+    \hline
+    The state of a system with $n$ degrees of freedom is described by $n$ coordinates $(q_1,..., q_n)$ and $n$ velocities
+    $(\dot{q}_1,...,\dot{q}_n)$.
+    &
+    The state of a system with $n$ degrees of freedom is described by $n$ coordinates $(q_1,..., q_n)$ and $n$ momenta $(p_1,..., p_n)$.
+    \\\hline
+    The state of the system may be represented by a point moving with a definite velocity in an $n$-dimensional configuration space.
+    &
+    The state of the system may be represented by a point in a $2n$-dimensional phase space.
+    \\\hline
+    The $n$ coordinates evolve according to $n$ second-order equations.
+    &
+    The $2n$ coordinates and momenta obey $2n$ first-order equations.
+    \\\hline
+    For a given $\mathcal{L}$, several trajectories may pass through a given point in configuration space depending on $\dot{q}$.
+    &
+    For a given $\mathcal{H}$ only one trajectory passes through a given point in phase space.
+    \\\hline
+    \end{tabular}
+    \caption{Comparison between the Lagrangian and the Hamiltonian formalism.}
+    \label{tab:lagrange_vs_hamilton}
+\end{table}
+
 \end{document}
