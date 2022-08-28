@@ -1523,9 +1523,10 @@ The Newton's equation for a charged particle in an electromagnetic field is
     \vec{F} = q\left(\vec E + \frac{\vec{v}}{c}\times\vec{B}\right)
 \end{equation*}
 Since the force depends on the velocity of the particle, we cannot simply assume that $\mathcal{L}=T-V$. The correct formula is indeed
-\begin{equation*}
+\begin{equation}
+    \label{eq:em_L}
     \mathcal{L} = \frac{1}{2}m\vec{v}^2-q\phi+\frac{q}{c}\vec{v}\cdot\vec{A}
-\end{equation*}
+\end{equation}
 where the scalar and vector potentials are defined such that
 \begin{equation*}
     \left\{\begin{array}{l}
@@ -1558,9 +1559,10 @@ which is exactly the Newton's equation by virtue of the identity
 
 \begin{remark}
     The canonical momentum differs from the linear momentum
-    \begin{equation*}
+    \begin{equation}
+        \label{eq:em_p}
         \vec{p}=m\vec{v}+\frac{q}{c}\vec{A}
-    \end{equation*}    
+    \end{equation}    
 \end{remark}
 
 \section*{Hamiltonian formalism}
@@ -1648,4 +1650,21 @@ A comparison between the Hamiltonian and the Lagrangian formalisms is igiven in 
     \label{tab:lagrange_vs_hamilton}
 \end{table}
 
+\subsection*{Electromagnetic Hamiltonian}
+Starting from the Lagrangian of the electromagnetic interaction, Eq. \ref{eq:em_L}, and the conjugate momentum, Eq. \ref{eq:em_p}, we find
+the Hamiltonian to be
+\begin{eqnarray*}
+    \mathcal{H}_{em} &=& \vec{p}\cdot\vec{v}-\mathcal{L}_{em} \\
+    &=& m\vec{v}\cdot\vec{v}+q\frac{\vec{v}\vec{A}}{c}-\frac{1}{2}m\vec{v}\vec{v}+q\phi-q\frac{q\cdot\vec A}{c} \\
+    &=& \frac{1}{2}m\vec{v}\cdot\vec{v}+q\phi = T+q\phi
+\end{eqnarray*}
+Notice that the vector potential disappeared from the Hamiltonian! The thing is that the Hamiltonian must be rewritten using the correct coordinates, that is,
+the conjugate momenta and not the velocities. If we make the transformation, we get
+\begin{equation*}
+    \mathcal{H}_{em} = \frac{|\vec{p}-q\vec{A}/c|^2}{2m} + q\phi
+\end{equation*}
+Notice that the Hamiltonian cannot be interpreted as the total energy of the system. The reason is that if we change the gauge, the Hamiltonian (but not the equations of motion)
+also changes. But the energy, being an observable cannot depend on the gauge. A gauge independence emerges if we add the energy of the fields themselves to obtain the total
+energy of the system. However, it can be shown that there is now way to uniquely separate the total energy into a field energy and a particle energy. 
+More details can be found in \cite{kobe}.
 \end{document}
