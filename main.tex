@@ -1717,5 +1717,64 @@ Of foundamental importance, are the Poisson brackets between the $q$'s and the $
     \end{split}
 \end{equation}
 
+\subsection{Canonical transformations}
+Consider a transformation where $q_i\to q'_i(q_i)$. The Lagrangian changes the functional form, but the new coordinates keep satisfying the
+Euler Lagrange equation. Since the Hamiltonian equation of motions are derived from the Euler Lagrange equations, it follows that also the
+Hamilton equations are invariant under a coordinate transformation. 
+
+In the Lagrange formalism we can only transform the $q$'s, because this transformation determines the transformatin of the $\dot q$'s and the $p$'.
+On the other hand, in the Hamiltonian formalism the $q$'q and the $p$'s can be transformed independently, giving us many more transformations compared to
+the Lagrangian case. The question is which of these transformations preserve the Hamilton equations of motion. Of course, the transformation where
+only the $q$'s change preserve the equation of motions, but what about general transformations of the $q$'s and the $p$'s?
+
+Consider the following transformation
+\begin{eqnarray*}
+    q&\to&q'(q,p) \\
+    p&\to&p'(q,p)
+\end{eqnarray*}
+
+The equations of motion for $q'_i$ are given by theorem \ref{theorem_poisson_bracket}
+\begin{equation*}
+    \dot{q'}_i = \sum_k\left(\frac{\partial q'_i}{\partial q_k}\frac{\partial\mathcal{H}}{\partial p_k}
+    - \frac{\partial q'_i}{\partial p_k}\frac{\partial\mathcal{H}}{\partial q_k} \right)
+\end{equation*}
+For the equations of motion to be preserved under the transformation, it means that $\dot{q}'_i = \partial\mathcal{H'}/\partial p'_i$. 
+Therefore,
+\begin{equation}
+    \label{eq:partial_canonical_transf_1}
+    \sum_k\left(\frac{\partial q'_i}{\partial q_k}\frac{\partial\mathcal{H}}{\partial p_k}
+    - \frac{\partial q'_i}{\partial p_k}\frac{\partial\mathcal{H}}{\partial q_k} \right) = 
+    \frac{\partial\mathcal{H'}}{\partial p_i}
+\end{equation}
+Notice that the physical system is the same in the two coordinate systems, therefore $\mathcal{H}(\vec q,\,\vec p) = \mathcal{H}'(\vec q',\,\vec p')$ and we 
+can write
+\begin{equation*}
+    \frac{\partial\mathcal{H}}{\partial p_k}(\vec q,\,\vec p) = \frac{\partial\mathcal{H'}}{\partial p_k}(\vec q',\,\vec p') =
+    \sum_l\left(\frac{\partial\mathcal{H'}}{\partial q'_l}\frac{\partial q'_l}{\partial p_k} + \frac{\partial\mathcal{H'}}{\partial p'_l}\frac{\partial p'_l}{\partial p_k} \right)
+\end{equation*}
+Substituiting this equation in Eq \ref{eq:partial_canonical_transf_1} we obtain
+\begin{eqnarray*}
+    &&\sum_{k,l}\left[ 
+        \frac{\partial q'_i}{\partial q_k}\left(
+            \frac{\partial\mathcal{H'}}{\partial q'_l}\frac{\partial q'_l}{\partial p_k} + \frac{\partial\mathcal{H'}}{\partial p'_l}\frac{\partial p'_l}{\partial p_k}
+        \right)
+        - \frac{\partial q'_i}{\partial p_k}\left(
+            \frac{\partial\mathcal{H'}}{\partial q'_l}\frac{\partial q'_l}{\partial q_k} + \frac{\partial\mathcal{H'}}{\partial p'_l}\frac{\partial p'_l}{\partial q_k}
+        \right)
+    \right] \\
+    &=& \sum_l\left[\frac{\partial\mathcal{H'}}{\partial q'_l}\{q'_i,\,q'_l\} + \frac{\partial\mathcal{H'}}{\partial p'_l}\{q'_i,\,p'_l\}\right] \\
+    &=& \frac{\partial\mathcal{H'}}{\partial p'_i}
+\end{eqnarray*}
+The previous equation holds if and only if the new coordinated satisfy the canonical Poisson brackets Eq \ref{eq:canonical_poisson_brackets}.
+
+\begin{definition}[Canonical transformation]
+    A transformation that preserves the Poisson brackets is said to be \textit{canonical}.
+\end{definition}
+
+We proved the following theorem
+\begin{theorem}
+    The Hamilton equations of motion are invariant under a canonical transformation of the coordinates.
+\end{theorem}
+
 \printbibliography
 \end{document}
