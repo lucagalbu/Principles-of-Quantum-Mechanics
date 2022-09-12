@@ -1776,5 +1776,44 @@ We proved the following theorem
     The Hamilton equations of motion are invariant under a canonical transformation of the coordinates.
 \end{theorem}
 
+\chapter{The postulates of quantum mechanics}
+\begin{center}
+    \begin{tabular}{p{0.45\linewidth} | p{0.45\linewidth}}
+    Classical mechanics & Quantum mechanics \\
+    \hline
+    The state of a particle at any given time is specified by the two variables $x(t)$ and $p(t)$, i.e., as a point
+    in a two dimensional phase space. 
+    & The state of the particle is represented by a vector $\ket{\Psi(t)}$ in a Hilbert space.
+    \\\hline
+    Every dynamical variable $\omega$ is a function of $x$ and $p$: $\omega=\omega(x,p)$.
+    & The independent variables $x$ and $p$ of classical mechanics are represented by Hermitian operators $X$ and $P$ with the
+    following matrix elements in the eigenbase of $X$:
+    \vbox{
+    \begin{eqnarray*}
+        \bra{x}X\ket{x'} &=& x\delta(x-x') \\
+        \bra{x}P\ket{x'} &=& -i\hbar\delta'(x-x')
+    \end{eqnarray*}
+    }
+    The operators corresponding to dependent variables $\omega(x, p)$ are given by Hermitian operators $\Omega(X, P)$ by replacing
+    $x$ and $p$ in $\omega$ by the corresponding operators $X$ and $P$.
+    \\\hline
+    If the particle is in a state given by $x$ and $p$, the measurement of the variable $\omega$ will yield a value $\omega(x,p)$.
+    The state will remain unaffected.
+    &If the particle is in a state $\ket{\Psi(t)}$, measurement of the variable corresponding to $\Omega$ will yield one of the
+    eigenvalues $\omega$ with probability $P(\omega)\propto\vert\scalar{\omega}{\Psi}\vert^2$. The state of the system will change
+    from $\ket{\Psi}$ to $\ket{\omega}$ as a result of the measurement.
+    \\\hline
+    The state variable change with time according to Hamilton's equations.
+    &The time evolution of the state vector $\ket{\Psi(t)}$ is given by solving the \textit{Schr\"odinger equation}
+    \vbox{
+        \begin{equation*}
+            i\hbar\frac{d}{dt}\ket{\Psi(t)}=H\ket{\Psi(t)}
+        \end{equation*}
+    }
+    where $H(X,P) = \mathcal{H}(x\to X,\, p\to P)$ is the quantum Hamiltonian operator and $\mathcal{H}$ is the Hamiltonian for
+    the corresponding classical problem.
+    \end{tabular}
+\end{center}
+
 \printbibliography
 \end{document}
